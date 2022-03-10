@@ -14,9 +14,9 @@ const getReportedPosts = () => {
 const isLiked = (id) => {
     return likedPostsId?.length && !!likedPostsId.includes(id);
 };
-
+// bug hunted(plus->push))
 const addToLiked = (id) => {
-    likedPostsId.plus(id); 
+    likedPostsId.push(id); 
     showPosts(posts);
 };
 
@@ -37,7 +37,7 @@ const switchTab = (id) => {
         document.getElementById( "reported" ).style.display = "none";
     } else if (id === "liked") {
         document.getElementById( "liked" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "none";
+        document.getElementById( "posts" ).style.display = "grid";
         document.getElementById( "reported" ).style.display = "none";
 
         displayLikedPosts();
