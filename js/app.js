@@ -1,5 +1,4 @@
 let posts=[ ];
-
 const likedPostsId = [];
 const reportedPostsId = [];
 
@@ -25,11 +24,11 @@ const reportPost = (id) => {
     const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
 };
-
+// bug hunted (conditional chaining)
 const displayContent = (text) => {
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+    return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
-
+// ------------------------
 const switchTab = (id) => {
     if (id === "posts") {
         document.getElementById( "posts" ).style.display = "grid";
@@ -49,9 +48,10 @@ const switchTab = (id) => {
         displayReportedPosts();
     }
 };
-
+// hunted bug2 (post->object)
 const createPost = (post) => {
     const image = post.image;
+    const image2 = post.userImage;
     const div = document.createElement( "article" );
     div.classList.add( "post" );
     div.innerHTML = `
@@ -62,7 +62,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${image2}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -162,6 +162,7 @@ const loadPosts = async () =>{
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
+  console.log(posts)
 }
 
 loadPosts();
