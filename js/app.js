@@ -13,7 +13,7 @@ const getReportedPosts = () => {
 const isLiked = (id) => {
     return likedPostsId?.length && !!likedPostsId.includes(id);
 };
-// bug hunted(plus->push))
+// bug hunted-1(plus->push))
 const addToLiked = (id) => {
     likedPostsId.push(id); 
     showPosts(posts);
@@ -24,11 +24,11 @@ const reportPost = (id) => {
     const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
 };
-// bug hunted (conditional chaining)
+// bug hunted-3 (conditional chaining)
 const displayContent = (text) => {
     return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
-// ------------------------
+
 const switchTab = (id) => {
     if (id === "posts") {
         document.getElementById( "posts" ).style.display = "grid";
@@ -48,7 +48,8 @@ const switchTab = (id) => {
         displayReportedPosts();
     }
 };
-// hunted bug2 (post->object)
+// hunted bug -2 (post->image2)
+// hunted bug -4 (comments[0])
 const createPost = (post) => {
     const image = post.image;
     const image2 = post.userImage;
@@ -120,9 +121,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                          ${post.comments[0]?.user}
                       </a>
-                      ${post.comments?.text}
+                      ${post.comments[0]?.text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
