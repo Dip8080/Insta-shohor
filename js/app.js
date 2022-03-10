@@ -18,12 +18,13 @@ const addToLiked = (id) => {
     likedPostsId.push(id); 
     showPosts(posts);
 };
-
+// 0000000000000000000000
 const reportPost = (id) => {
     reportedPostsId.push(id);
     const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
     showPosts(remainingPosts);
 };
+// 00000000000000000000000000
 // bug hunted-3 (conditional chaining)
 const displayContent = (text) => {
     return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
@@ -36,7 +37,7 @@ const switchTab = (id) => {
         document.getElementById( "reported" ).style.display = "none";
     } else if (id === "liked") {
         document.getElementById( "liked" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "grid";
+        document.getElementById( "posts" ).style.display = "none";
         document.getElementById( "reported" ).style.display = "none";
 
         displayLikedPosts();
@@ -48,6 +49,7 @@ const switchTab = (id) => {
         displayReportedPosts();
     }
 };
+// --------------------------------------------------
 // hunted bug -2 (post->image2)
 // hunted bug -4 (comments[0])
 const createPost = (post) => {
@@ -96,7 +98,8 @@ const createPost = (post) => {
 
                   <div class="post__indicators"></div>
 
-                  <button class="post__button post__button--align-right" onclick="reportPost(${
+                  <button class="post__button post__button--align-right" 
+                  onclick="reportPost(${
                       post.id
                   })">
                     <i class="fa-solid fa-ban"></i>
@@ -145,25 +148,33 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    document.getElementById('liked_header').style.display='block';
+    document.getElementById('report_header').style.display='none';
+    document.getElementById( "liked" ).textContent='';
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
     });
 };
-
+// 000000000000000000000000000000
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
-        const div = createPost(post);
+    document.getElementById('report_header').style.display='block';
+    document.getElementById('liked_header').style.display='none';
+    document.getElementById( "reported" ).textContent='';
+    reportedPosts.forEach((post) => {    
+    const div = createPost(post);
         document.getElementById( "reported" ).appendChild(div);
+        
     });
 };
-
+// 0000000000000000000000000000000000
 const loadPosts = async () =>{
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
-  console.log(posts)
+  // displayReportedPosts(posts)
+  // console.log(posts)
 }
 
 loadPosts();
