@@ -80,7 +80,23 @@
                 
             </div>
         </main>
-        <footer></footer>
+        <footer>
+            <section class="container p-4 my-5"  id="qna">
+                <div>
+                    <h1>what is a javascript engine ?</h1>
+                    <p>sorry to say , but it's not actually an engine . u need no 
+                        oil to run it . js engine is just a piece of program which is written in low-level language (v8-c++,spidermonkey-c,c++,RUST) . so  basically this program or engine takes  High-level code like javascript and convert it into machine language(010101) .
+                        <br>
+                        but in bigger picture it does much more than just executing your code . first of all every js engine is the main component of any Run time enviroment . all Runtime enviroment has it's own js engine . like chrome browser and node.js has  V-8 engine , firefox browser has SpiderMonkey .  inside a runtime enviroment a js engine takes human readable js code and with the help of API , callback function and event loop it performs just-in-time compilation(first engine was interpreted though). it is actually pretty amazing . so just-in-time compilation means it will execute each frame of js code line by line (interpreted) and also uses a compailer  to enhance the performence . damn , respect each and every one who can generate ideas like this .
+                    </p>
+                </div>
+                <div>
+                    <h1>what is the  difference between local-storage and session-storage ? </h1>
+                    <p>so the soul purpose of both of this is to store data . And both do it in a similar way . both local-storage and session-storage store data in a web browser And has a storage capacity of 5mb. Not like cookies who send data to the server to be stored . <br> Then , what are the differences ? main difference is local-storage stores data permanetly in a browser even after u close the tab or the bowser or u destroy your pc . it will store data forever until it's manually removed . And session-storage removes data automatically as soon as u close the tab or the browser  </p>
+                </div>
+                
+            </section>
+        </footer>
 
         <!-- add javascript  file  -->
         <script src="./js/app.js"></script>
